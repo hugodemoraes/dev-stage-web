@@ -1,11 +1,14 @@
 import Image from 'next/image'
 
 import logo from '@/assets/logo.svg'
-import { IconButton } from '@/components/icon-button'
-import { InputField, InputIcon, InputRoot } from '@/components/input'
-import { BadgeCheck, Copy, Link, Medal, MousePointerClick } from 'lucide-react'
+
+import { InviteLinkInput } from './invite-link-input'
+import { Ranking } from './ranking'
+import { Stats } from './stats'
 
 export default function Invite() {
+  const inviteLink = 'http://localhost:3000/invite/123412342u1234u9'
+
   return (
     <div className="min-h-dvh flex items-center justify-between gap-16 flex-col md:flex-row">
       <div className="flex flex-col gap-10 w-full max-w-[550px]">
@@ -32,55 +35,13 @@ export default function Invite() {
             </p>
           </div>
 
-          <InputRoot>
-            <InputIcon>
-              <Link className="size-5" />
-            </InputIcon>
+          <InviteLinkInput inviteLink={inviteLink} />
 
-            <InputField
-              readOnly
-              defaultValue="https://localhost:3000/invite/123412342u1234u9"
-            />
-
-            <IconButton className="-mr-2">
-              <Copy className="size-5" />
-            </IconButton>
-          </InputRoot>
-
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="relative bg-gray-700 border border-gray-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                1042
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Acessos ao link
-              </span>
-
-              <MousePointerClick className="size-5 text-purple absolute top-3 left-3" />
-            </div>
-            <div className="relative bg-gray-700 border border-gray-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                954
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Inscrições feitas
-              </span>
-
-              <BadgeCheck className="size-5 text-purple absolute top-3 left-3" />
-            </div>
-            <div className="relative bg-gray-700 border border-gray-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                3º
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Posição no ranking
-              </span>
-
-              <Medal className="size-5 text-purple absolute top-3 left-3" />
-            </div>
-          </div>
+          <Stats />
         </div>
       </div>
+
+      <Ranking />
     </div>
   )
 }
